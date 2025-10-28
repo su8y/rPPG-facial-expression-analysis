@@ -12,6 +12,8 @@
 ### Backend 
 - Nestjs
 - TypeORM
+- calss-validator
+- 
 
 ### 기술 선택 이유
 - React를 선택한 이유: ...
