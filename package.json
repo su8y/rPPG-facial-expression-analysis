@@ -1,0 +1,13 @@
+{
+  "name": "rppg-facial-expression-analysis",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "start:backend": "npm start --workspace=backend",
+    "start:frontend": "npm run dev --workspace=frontend"
+  }
+}
