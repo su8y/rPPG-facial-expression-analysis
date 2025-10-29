@@ -7,6 +7,7 @@ import { UserRepositoryPersistence } from './infrastructure/user.repository.pers
 import { IUserRepository } from './domain/user.repository';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './application/jwt.strategy';
 
 @Module({
   imports: [
@@ -19,11 +20,12 @@ import { PassportModule } from '@nestjs/passport';
     }),
     TypeOrmModule.forFeature([User]),
   ],
-  providers: [
-    AuthService,
-    { provide: IUserRepository, useClass: UserRepositoryPersistence },
-  ],
   controllers: [AuthController],
-  exports: [AuthService],
+  providers: [
+    { provide: IUserRepository, useClass: UserRepositoryPersistence },
+    AuthService,
+    JwtStrategy,
+  ],
+  exports: [AuthService, JwtStrategy],
 })
 export class AuthModule {}
