@@ -1,9 +1,12 @@
 import {AppShell, Burger, Container, Flex, NavLink, Text} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {Outlet} from "react-router-dom";
+import { useAuth } from "../hooks/useAuthContext";
+import {ROOT} from "../route/root.ts";
 
 export function Layout() {
     const [opened, { toggle }] = useDisclosure();
+    const { isAuthenticated, logout } = useAuth();
 
     return (
         <AppShell
@@ -27,17 +30,16 @@ export function Layout() {
                 </Flex>
             </AppShell.Header>
             <AppShell.Navbar>
-                <NavLink label="검사 페이지" href={"/"} />
+                <NavLink label="검사 페이지" href={ROOT.DASHBOARD} />
 
-                <NavLink label={"로그인/회원가입"}>
-                    <NavLink label="로그인" href={"/"} />
-                    <NavLink label="회원가입" href={"/"} />
-                    <NavLink label="로그아웃" onClick={() => {
-                        localStorage.removeItem('accessToken')
-                        location.reload()
-                    }
-                    }/>
-                </NavLink>
+                {isAuthenticated ? (
+                    <NavLink label="로그아웃" onClick={logout} />
+                ) : (
+                    <>
+                        <NavLink label="로그인" href={ROOT.LOGIN} />
+                        <NavLink label="회원가입" href={ROOT.SIGNUP} />
+                    </>
+                )}
             </AppShell.Navbar>
             <AppShell.Main>
                 <Container>
