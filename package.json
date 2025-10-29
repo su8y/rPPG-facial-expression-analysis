@@ -8,6 +8,6 @@
   ],
   "scripts": {
     "start:backend": "npm start --workspace=backend",
-    "start:frontend": "npm run dev --workspace=frontend"
+    "start:frontend": "npm start --workspace=frontend"
   }
 }
