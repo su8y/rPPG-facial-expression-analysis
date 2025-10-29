@@ -1,10 +1,10 @@
 import { IsString, MinLength } from 'class-validator';
 
-export class SignUpUserCommand {
+export class SignInUserCommand {
   @IsString()
-  username: string;
+  username!: string;
 
   @IsString()
   @MinLength(4)
-  password: string;
+  password!: string;
 }
