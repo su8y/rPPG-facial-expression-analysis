@@ -1,0 +1,1 @@
+import axiosInstance from "../common/axios.ts";export const getDashboardData = async (): Promise<{    email: string;    name: string;    firstName: string;}> => {    const dashboardUrl = import.meta.env.VITE_DASHBOARD_API as string;    const response = await axiosInstance.get(dashboardUrl);    return response.data;};
