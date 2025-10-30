@@ -25,15 +25,32 @@ npm install
 npm run dev
 
 ## 프로젝트 구조
+```
 src/        
-├── components/     
-│   ├── RPPGChart/        # rPPG 데이터 차트     
-│   ├── EmotionAnalysis/  # 감정 분석 표시    
-│   └── AssignmentCard/   # 과제별 결과 카드   
-├── hooks/  
-├── api/    
-├── types/  
-└── ... 
+├── components/           # 컴포넌트
+│   ├── common/           # 범용 공통 컴포넌트    
+│   └── layout/           # 레이아웃 컴포넌트   
+├── features/             # 각 기능 별 패키지            
+│   ├── auth/             # 인증 기능 패키지   
+│   │   ├── api/          # 인증 API
+│   │   ├── hooks/        # 인증 훅
+│   │   └── types/        # 인증 Type 정의
+│   └── auth/             # 대시보드 기능 패키지   
+│       ├── components/   # 대시보드 컴포넌트
+│       ├── api/          # 대시보드 API
+│       ├── hooks/        # 대시보드 훅
+│       ├── utils/        # 대시보드 유틸
+│       └── types/        # 대시보드 Type 정의
+├── pages/                # 라우트 별 페이지   
+│   ├── login.ts          # 로그인 페이지
+│   ├── signup.ts         # 회원가입 페이지
+│   └── dashboard.ts      # 대시보드 페이지
+├── utils/                # 글로벌 유틸 
+│   ├── axios.ts          # axios 인스턴스
+│   └── constants.ts      # 글로벌 상수
+└── App.tsx               # 라우팅 컴포넌트
+
+```
 
 ## 주요 기능
 - rPPG 생체신호 데이터 시각화 (심박수 그래프)
