@@ -1,9 +1,10 @@
 import React from 'react';
-import {Card, Table, Text, Title} from '@mantine/core';
+import {Table, Text} from '@mantine/core';
 import {EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, MimicDetail, MimicMatchScore} from "../../types/rppg.type.ts";
-import {BlurOverlay} from '../../../../components';
 import {EmptyTableTd} from "../EmptyTableTd.tsx";
+import {DetailSection} from "./DetailSection.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
 interface FacialMimicMatchCardProps {
     data: MimicDetail;
@@ -29,11 +30,7 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
     const sortedRowData: MimicRowData[] = [...activeRowData, ...inactiveRowData];
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 따라하기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                제시된 표정을 얼마나 정확하게 따라했는지 확인합니다.
-            </Text>
+        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_MIMIC}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -70,6 +67,6 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
                     })}
                 </Table.Tbody>
             </Table>
-        </Card>
+        </DetailSection>
     );
 };

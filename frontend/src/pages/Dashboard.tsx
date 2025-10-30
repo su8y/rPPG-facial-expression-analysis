@@ -14,7 +14,7 @@ export function Dashboard() {
                 (data) => (
                     isMobile ? (
                         <Tabs defaultValue="basic">
-                            <Tabs.List>
+                            <Tabs.List style={{marginBottom: '1rem'}}>
                                 <Tabs.Tab value="basic">기본 결과</Tabs.Tab>
                                 <Tabs.Tab value="detailed">상세 결과</Tabs.Tab>
                             </Tabs.List>

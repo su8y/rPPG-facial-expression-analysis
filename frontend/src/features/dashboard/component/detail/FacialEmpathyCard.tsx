@@ -1,7 +1,9 @@
-import {Badge, Card, Table, Text, Title} from '@mantine/core';
+import {Badge, Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES, MATCH_STATUS} from '../../utils/constants';
 import type {EmotionType, EmpathyDetail, EmpathyRow, ScoreBeforeAfter} from "../../types/rppg.type.ts";
 import {EmptyTableTd} from "../EmptyTableTd.tsx";
+import {DetailSection} from "./DetailSection.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
 interface FacialEmpathyCardProps {
     data: EmpathyDetail;
@@ -32,11 +34,7 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
     const sortedRowData = [...activeRowData, ...inactiveRowData];
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 공감하기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                AI가 분석한 표정과 스스로 느낀 감정을 비교하고, 공감 능력의 변화를 확인합니다.
-            </Text>
+        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_EMPATHY}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -87,6 +85,6 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
                     })}
                 </Table.Tbody>
             </Table>
-        </Card>
+        </DetailSection>
     );
 };

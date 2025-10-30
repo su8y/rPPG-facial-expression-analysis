@@ -1,9 +1,11 @@
-import {Badge, Box, Card, Table, Text, Title} from '@mantine/core';
+import {Badge, Box, Table, Text} from '@mantine/core';
 import {EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, ReplicationDetail} from "../../types/rppg.type.ts";
 import {BlurOverlay} from "../../../../components";
 import type {ReactNode} from "react";
 import {EmptyTableTd} from "../EmptyTableTd.tsx";
+import {DetailSection} from "./DetailSection.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
 interface FacialReplicationCardProps {
     data: ReplicationDetail;
@@ -57,11 +59,7 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
     });
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 지어보기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                제시된 감정을 표정으로 표현하는 능력을 AI가 분석합니다.
-            </Text>
+        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_REPLICATION}>
             <Table verticalSpacing="xs">
                 <Table.Thead>
                     <Table.Tr>
@@ -72,6 +70,6 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
                 </Table.Thead>
                 <Table.Tbody>{[...activeRows, ...inactiveRows]}</Table.Tbody>
             </Table>
-        </Card>
+        </DetailSection>
     );
 };

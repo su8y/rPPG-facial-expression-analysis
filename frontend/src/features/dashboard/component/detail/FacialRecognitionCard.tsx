@@ -1,7 +1,9 @@
-import {Badge, Card, Table, Text, Title} from '@mantine/core';
+import {Badge, Table, Text} from '@mantine/core';
 import {EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
 import type {EmotionType, RecognitionDetail, RecognitionRow} from "../../types/rppg.type.ts";
 import {EmptyTableTd} from "../EmptyTableTd.tsx";
+import {DetailSection} from "./DetailSection.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
 interface FacialRecognitionCardProps {
     data: RecognitionDetail;
@@ -26,11 +28,7 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
     const sortedRowData: RecognitionRowData[] = [...activeRowData, ...inactiveRowData];
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 인지하기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                제시된 표정을 얼마나 잘 인지하는지 확인합니다.
-            </Text>
+        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_RECOGNITION}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -83,6 +81,6 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                     })}
                 </Table.Tbody>
             </Table>
-        </Card>
+        </DetailSection>
     );
 };
