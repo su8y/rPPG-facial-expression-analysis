@@ -1,7 +1,7 @@
 import {Badge, Card, Table, Text, Title} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES, MATCH_STATUS} from '../../utils/constants';
 import type {EmotionType, EmpathyDetail, EmpathyRow, ScoreBeforeAfter} from "../../types/rppg.type.ts";
-import {BlurOverlay} from '../../../../components';
+import {EmptyTableTd} from "../EmptyTableTd.tsx";
 
 interface FacialEmpathyCardProps {
     data: EmpathyDetail;
@@ -11,9 +11,6 @@ type EmpathyRowData = { emotion: EmotionType, row: EmpathyRow, score: ScoreBefor
     emotion: EmotionType;
     isInactive: true
 };
-
-const EmptyTableTd = ({value}: { value: string }) => (
-    <Table.Td><Text component="div" c="dimmed" style={{position: 'relative'}}>{value}<BlurOverlay/></Text></Table.Td>);
 
 export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
@@ -56,8 +53,9 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
                             return (
                                 <Table.Tr key={item.emotion}>
                                     <Table.Td>{EMOTION_NAMES[item.emotion]}</Table.Td>
-                                    <EmptyTableTd value={'없음'}/>
-                                    <EmptyTableTd value={'없음'}/>
+                                    <EmptyTableTd value={'슬픔(80%)'}/>
+                                    <EmptyTableTd value={'중립'}/>
+                                    <EmptyTableTd value={'불일치'}/>
                                     <EmptyTableTd value={'00점 → 00점'}/>
                                 </Table.Tr>
                             );

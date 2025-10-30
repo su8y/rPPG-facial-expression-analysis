@@ -1,0 +1,1 @@
+import {Table, Text} from "@mantine/core";import {BlurOverlay} from "../../../components";export const EmptyTableTd = ({value}: { value: string }) => (    <Table.Td><Text component="div" c="dimmed" style={{position: 'relative'}}>{value}<BlurOverlay/></Text></Table.Td>);

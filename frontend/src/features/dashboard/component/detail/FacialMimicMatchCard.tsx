@@ -3,6 +3,7 @@ import {Card, Table, Text, Title} from '@mantine/core';
 import {EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, MimicDetail, MimicMatchScore} from "../../types/rppg.type.ts";
 import {BlurOverlay} from '../../../../components';
+import {EmptyTableTd} from "../EmptyTableTd.tsx";
 
 interface FacialMimicMatchCardProps {
     data: MimicDetail;
@@ -46,12 +47,7 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
                             return (
                                 <Table.Tr key={score.emotion}>
                                     <Table.Td>{EMOTION_NAMES[score.emotion]}</Table.Td>
-                                    <Table.Td >
-                                        <Text style={{position: 'relative'}} component="div" c="dimmed">
-                                            10% → 15%
-                                            <BlurOverlay/>
-                                        </Text>
-                                    </Table.Td>
+                                    <EmptyTableTd value={'10% -> 15%'}/>
                                 </Table.Tr>
                             );
                         }

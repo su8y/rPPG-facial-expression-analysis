@@ -1,11 +1,11 @@
-import {HeartRateChart} from "./basic/HeartRateChart.tsx";
-import type {DashboardData} from "../types/rppg.type.ts";
-import {HeartRateVariabilityChart} from "./basic/HeartRateVariabilityChart.tsx";
-import {DepressionResultChart} from "./basic/DepressionResultChart.tsx";
-import {StressGauge} from "./basic/StressGauge.tsx";
+import {HeartRateChart} from "./HeartRateChart.tsx";
+import type {DashboardData} from "../../types/rppg.type.ts";
+import {HeartRateVariabilityChart} from "./HeartRateVariabilityChart.tsx";
+import {DepressionResultChart} from "./DepressionResultChart.tsx";
+import {StressGauge} from "./StressGauge.tsx";
 import {Grid} from "@mantine/core";
-import {EmotionDoughnutChart} from "./basic/EmotionDoughnutChart.tsx";
-import {HeartRateChangesChart} from "./basic/HeartRateChagesChart.tsx";
+import {EmotionDoughnutChart} from "./EmotionDoughnutChart.tsx";
+import {HeartRateChangesChart} from "./HeartRateChagesChart.tsx";
 
 export interface BasicResultsProps {
     data: DashboardData;

@@ -1,10 +1,10 @@
 import React from 'react';
 import {SimpleGrid} from '@mantine/core';
-import {FacialEmpathyCard} from './detail/FacialEmpathyCard.tsx';
-import {FacialMimicMatchCard} from './detail/FacialMimicMatchCard.tsx';
-import {FacialRecognitionCard} from "./detail/FacialRecognitionCard.tsx";
-import type {DashboardData} from "../types/rppg.type.ts";
-import {FacialReplicationCard} from "./detail/FacialReplicationCard.tsx";
+import {FacialEmpathyCard} from './FacialEmpathyCard.tsx';
+import {FacialMimicMatchCard} from './FacialMimicMatchCard.tsx';
+import {FacialRecognitionCard} from "./FacialRecognitionCard.tsx";
+import type {DashboardData} from "../../types/rppg.type.ts";
+import {FacialReplicationCard} from "./FacialReplicationCard.tsx";
 
 export interface DetailedResultsProps {
     data: DashboardData;

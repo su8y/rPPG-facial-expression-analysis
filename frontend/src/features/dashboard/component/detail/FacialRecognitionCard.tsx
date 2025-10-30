@@ -1,7 +1,7 @@
 import {Badge, Card, Table, Text, Title} from '@mantine/core';
 import {EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
 import type {EmotionType, RecognitionDetail, RecognitionRow} from "../../types/rppg.type.ts";
-import {BlurOverlay} from "../../../../components";
+import {EmptyTableTd} from "../EmptyTableTd.tsx";
 
 interface FacialRecognitionCardProps {
     data: RecognitionDetail;
@@ -59,19 +59,10 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                             return (
                                 <Table.Tr key={row.proposedEmotion}>
                                     <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}</Table.Td>
-                                    <Table.Td>
-                                        <Text style={{position: 'relative'}} component="div"
-                                              c="dimmed">
-                                            {EMOTION_NAMES['Neutral']}
-                                            <BlurOverlay/>
-                                        </Text>
-                                    </Table.Td>
-                                    <Table.Td>
-                                        <Badge style={{position: 'relative'}} color="red"
-                                               variant="light">{SUCCESS_STATUS.FAILURE}
-                                            <BlurOverlay/>
-                                        </Badge>
-                                    </Table.Td>
+                                    <EmptyTableTd value={EMOTION_NAMES['Neutral']}/>
+                                    <EmptyTableTd value={<Badge style={{position: 'relative'}} color="red"
+                                                                variant="light">{SUCCESS_STATUS.FAILURE}</Badge>}/>
+                                    <EmptyTableTd value={''}/>
                                     {summaryCells}
                                 </Table.Tr>
                             );

@@ -3,6 +3,7 @@ import {EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, ReplicationDetail} from "../../types/rppg.type.ts";
 import {BlurOverlay} from "../../../../components";
 import type {ReactNode} from "react";
+import {EmptyTableTd} from "../EmptyTableTd.tsx";
 
 interface FacialReplicationCardProps {
     data: ReplicationDetail;
@@ -22,18 +23,13 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
             inactiveRows.push(
                 <Table.Tr key={emotion}>
                     <Table.Td>{EMOTION_NAMES[emotion]}</Table.Td>
-                    <Table.Td>
-                        <Box style={{position: 'relative'}}>
-                            <Text component="div" c="dimmed">중립 (15점 → 20점)</Text>
-                            <BlurOverlay/>
-                        </Box>
-                    </Table.Td>
-                    <Table.Td>
-                        <Box style={{position: 'relative'}}>
-                            <Badge color="orange" variant="light">부자연스러움</Badge>
-                            <BlurOverlay/>
-                        </Box>
-                    </Table.Td>
+                    <EmptyTableTd value={<Box style={{position: 'relative'}}>
+                        <Text component="div" c="dimmed">중립 (15점 → 20점)</Text>
+                    </Box>}></EmptyTableTd>
+                    <EmptyTableTd value={<Box style={{position: 'relative'}}>
+                        <Badge color="orange" variant="light">부자연스러움</Badge>
+                        <BlurOverlay/>
+                    </Box>}/>
                 </Table.Tr>
             );
         } else {
