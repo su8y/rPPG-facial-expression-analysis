@@ -12,9 +12,7 @@ export interface DashboardData {
   detailed: DetailedReport;
 }
 
-/**
- * 감정의 종류 (문자열 리터럴 타입)
- */
+// 감정의 종류 (문자열 리터럴 타입)
 export type EmotionType =
   | 'Angry'
   | 'Disgusted'
@@ -24,14 +22,10 @@ export type EmotionType =
   | 'Sad'
   | 'Surprised';
 
-/**
- * 스트레스 수준
- */
+// 스트레스 수준
 export type StressLevel = 'Low' | 'Medium' | 'High';
 
-/**
- * 감정 분석 결과 (확률)
- */
+// 감정 분석 결과 (확률)
 export interface EmotionResult {
   Angry: number;
   Disgusted: number;
@@ -42,19 +36,17 @@ export interface EmotionResult {
   Surprised: number;
 }
 
-/**
- * 훈련 전/후 점수
- */
+
+// 훈련 전/후 점수
 export interface ScoreBeforeAfter {
   before: number;
   after: number;
 }
 
-// --- 3. rPPG 및 점수 타입 ---
+// rPPG 및 점수 타입
 
-/**
- * rPPG 측정 세션 데이터
- */
+
+// rPPG 측정 세션 데이터
 export interface RppgData {
   /** 심박수 (문자열) */
   hr: string;
@@ -70,19 +62,14 @@ export interface RppgData {
   emotionResult: EmotionResult;
 }
 
-/**
- * 우울증 점수 (이전/현재)
- */
+//우울증 점수 (이전/현재)
 export interface DepressionScore {
   previous: number;
   current: number;
 }
 
-// --- 4. 상세 트레이닝 결과 (Detailed) ---
+// 상세 트레이닝 결과
 
-/**
- * `detailed` 객체의 전체 구조
- */
 export interface DetailedReport {
   empathy: EmpathyDetail;
   mimic: MimicDetail;
@@ -90,7 +77,7 @@ export interface DetailedReport {
   replication: ReplicationDetail;
 }
 
-// 4-1. 공감하기 (Empathy)
+// 공감하기
 export interface AiAnalysis {
   emotion: EmotionType;
   percentage: number;
@@ -106,7 +93,7 @@ export interface EmpathyDetail {
   empathyScores: ScoreBeforeAfter[];
 }
 
-// 4-2. 따라하기 (Mimic)
+// 따라하기
 export interface MimicMatchScore extends ScoreBeforeAfter {
   emotion: EmotionType;
 }
@@ -115,7 +102,7 @@ export interface MimicDetail {
   matchScores: MimicMatchScore[];
 }
 
-// 4-3. 인지하기 (Recognition)
+// 인지하기
 export interface RecognitionRow {
   proposedEmotion: EmotionType;
   myEmotion: EmotionType;
@@ -128,7 +115,7 @@ export interface RecognitionDetail {
   responseTime: number;
 }
 
-// 4-4. 재현하기 (Replication)
+// 재현하기
 export interface ReplicationAiAnalysis {
   emotion: EmotionType;
   previous: number;

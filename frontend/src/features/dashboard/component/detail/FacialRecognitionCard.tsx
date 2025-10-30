@@ -59,13 +59,18 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                             return (
                                 <Table.Tr key={row.proposedEmotion}>
                                     <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}</Table.Td>
-                                    <Table.Td style={{position: 'relative'}}>
-                                        <Text c="dimmed">{EMOTION_NAMES['Neutral']}</Text>
-                                        <BlurOverlay/>
+                                    <Table.Td>
+                                        <Text style={{position: 'relative'}} component="div"
+                                              c="dimmed">
+                                            {EMOTION_NAMES['Neutral']}
+                                            <BlurOverlay/>
+                                        </Text>
                                     </Table.Td>
-                                    <Table.Td style={{position: 'relative'}}>
-                                        <Badge color="red" variant="light">{SUCCESS_STATUS.FAILURE}</Badge>
-                                        <BlurOverlay/>
+                                    <Table.Td>
+                                        <Badge style={{position: 'relative'}} color="red"
+                                               variant="light">{SUCCESS_STATUS.FAILURE}
+                                            <BlurOverlay/>
+                                        </Badge>
                                     </Table.Td>
                                     {summaryCells}
                                 </Table.Tr>
