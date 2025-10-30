@@ -24,7 +24,7 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
                     <Table.Td>{EMOTION_NAMES[emotion]}</Table.Td>
                     <Table.Td>
                         <Box style={{position: 'relative'}}>
-                            <Text c="dimmed">중립 (15점 → 20점)</Text>
+                            <Text component="div" c="dimmed">중립 (15점 → 20점)</Text>
                             <BlurOverlay/>
                         </Box>
                     </Table.Td>
