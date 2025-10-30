@@ -1,5 +1,5 @@
 import {Badge, Table, Text} from '@mantine/core';
-import {EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
+import {EMOTION_EMOJI, EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
 import type {EmotionType, RecognitionDetail, RecognitionRow} from "../../types/rppg.type.ts";
 import {EmptyTableTd} from "../EmptyTableTd.tsx";
 import {DetailSection} from "./DetailSection.tsx";
@@ -56,7 +56,7 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                         if ('isInactive' in row) {
                             return (
                                 <Table.Tr key={row.proposedEmotion}>
-                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}</Table.Td>
+                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}{EMOTION_EMOJI[row.proposedEmotion]}</Table.Td>
                                     <EmptyTableTd value={EMOTION_NAMES['Neutral']}/>
                                     <EmptyTableTd value={<Badge style={{position: 'relative'}} color="red"
                                                                 variant="light">{SUCCESS_STATUS.FAILURE}</Badge>}/>
@@ -68,7 +68,7 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                             const isMatch = row.proposedEmotion === row.myEmotion;
                             return (
                                 <Table.Tr key={row.proposedEmotion}>
-                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}</Table.Td>
+                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}{EMOTION_EMOJI[row.proposedEmotion]}</Table.Td>
                                     <Table.Td>{EMOTION_NAMES[row.myEmotion]}</Table.Td>
                                     <Table.Td>
                                         <Badge

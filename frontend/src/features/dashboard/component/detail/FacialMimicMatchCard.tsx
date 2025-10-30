@@ -1,6 +1,6 @@
 import React from 'react';
 import {Table, Text} from '@mantine/core';
-import {EMOTION_NAMES} from '../../utils/constants';
+import {EMOTION_EMOJI, EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, MimicDetail, MimicMatchScore} from "../../types/rppg.type.ts";
 import {EmptyTableTd} from "../EmptyTableTd.tsx";
 import {DetailSection} from "./DetailSection.tsx";
@@ -43,7 +43,7 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
                         if ('isInactive' in score) {
                             return (
                                 <Table.Tr key={score.emotion}>
-                                    <Table.Td>{EMOTION_NAMES[score.emotion]}</Table.Td>
+                                    <Table.Td>{EMOTION_NAMES[score.emotion]}{EMOTION_EMOJI[score.emotion]}</Table.Td>
                                     <EmptyTableTd value={'10% -> 15%'}/>
                                 </Table.Tr>
                             );
@@ -55,7 +55,7 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
 
                         return (
                             <Table.Tr key={score.emotion}>
-                                <Table.Td>{EMOTION_NAMES[score.emotion]}</Table.Td>
+                                <Table.Td>{EMOTION_NAMES[score.emotion]}{EMOTION_EMOJI[score.emotion]}</Table.Td>
                                 <Table.Td>
                                     <Text>
                                         {score.before}% → <Text component="span" c={color}

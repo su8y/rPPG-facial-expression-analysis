@@ -50,7 +50,7 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
                         if ('isInactive' in item) {
                             return (
                                 <Table.Tr key={item.emotion}>
-                                    <Table.Td>{EMOTION_NAMES[item.emotion]}</Table.Td>
+                                    <Table.Td>{EMOTION_NAMES[item.emotion]}{EMOTION_EMOJI[item.emotion]}</Table.Td>
                                     <EmptyTableTd value={'슬픔(80%)'}/>
                                     <EmptyTableTd value={'중립'}/>
                                     <EmptyTableTd value={'불일치'}/>
