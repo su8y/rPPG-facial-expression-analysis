@@ -5,7 +5,7 @@ import {Login} from "./pages/Login.tsx";
 import {Signup} from "./pages/Signup.tsx";
 import ProtectLayout from "./components/ProtectLayout.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
-import {ROOT} from "./route/root.ts";
+import {ROOT} from "./constants/ROOT.ts";
 
 function RouteProvider() {
     return (

@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.788);
+
 }
 
 html,
@@ -19,7 +20,7 @@ body {
     "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 #root {

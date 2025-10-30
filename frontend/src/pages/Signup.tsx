@@ -2,7 +2,7 @@ import { Button, Paper, PasswordInput, Stack, TextInput, Title, Text } from "@ma
 import { Link } from "react-router-dom";
 import { useForm } from "@mantine/form";
 import { useAuth } from "../hooks/useAuth.ts";
-import {ROOT} from "../route/root.ts";
+import {ROOT} from "../constants/ROOT.ts";
 
 export function Signup() {
     const { signupMutation } = useAuth();
