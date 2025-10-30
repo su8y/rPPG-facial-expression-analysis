@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import LoadingIndicator from './LoadingIndicator';
-import {ROOT} from "../route/root.ts";
+import {ROOT} from "../constants/ROOT.ts";
 import {useAuth} from "../hooks/useAuthContext.ts"; // (옵션)
 
 const ProtectLayout = () => {

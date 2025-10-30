@@ -7,7 +7,7 @@ import {useMediaQuery} from "@mantine/hooks";
 
 export function Dashboard() {
     const dashboardQueryResult = useDashboardData();
-    const isMobile = useMediaQuery('(max-width: 48em)'); // Mantine's default breakpoint for sm is 48em
+    const isMobile = useMediaQuery('(max-width: 73em)');
 
     return (
         <QueryLayout queryResult={dashboardQueryResult}>
@@ -29,7 +29,6 @@ export function Dashboard() {
                         </Tabs>
                     ) : (
                         <Grid>
-
                             <Grid.Col span={6}>
                                 <BasicResults data={data}/>
                             </Grid.Col>

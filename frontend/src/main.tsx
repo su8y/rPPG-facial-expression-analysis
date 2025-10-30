@@ -4,6 +4,7 @@ import './index.css'
 import RouteProvider from "./RouteProvider.tsx";
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'; // Import QueryClient and QueryClientProvider
 import '@mantine/core/styles.css';
+import '@mantine/charts/styles.css';
 
 import {MantineProvider} from '@mantine/core';
 import LoadingIndicator from "./components/LoadingIndicator.tsx";
