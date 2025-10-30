@@ -1,8 +1,8 @@
 import {AppShell, Burger, Flex, Grid, Image, NavLink} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
 import {Outlet} from "react-router-dom";
-import {useAuth} from "../hooks/useAuthContext";
-import {ROOT} from "../constants/ROOT.ts";
+import {useAuth} from "../../features/auth/hooks/useAuthContext.ts";
+import {ROOT} from "../../utils/constants.ts";
 
 export function Layout() {
     const [opened, {toggle}] = useDisclosure();

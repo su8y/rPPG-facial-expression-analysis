@@ -1,0 +1,1 @@
+export * from './component/BasicResults';export * from './component/DetailedResults';

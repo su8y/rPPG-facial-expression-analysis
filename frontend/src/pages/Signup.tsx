@@ -1,8 +1,8 @@
 import { Button, Paper, PasswordInput, Stack, TextInput, Title, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { useForm } from "@mantine/form";
-import { useAuth } from "../hooks/useAuth.ts";
-import {ROOT} from "../constants/ROOT.ts";
+import { useAuth } from "../features/auth/hooks/useAuth.ts";
+import {ROOT} from "../utils/constants.ts";
 
 export function Signup() {
     const { signupMutation } = useAuth();

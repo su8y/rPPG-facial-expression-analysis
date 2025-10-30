@@ -1,13 +1,14 @@
-import {StrictMode, Suspense} from 'react'
-import {createRoot} from 'react-dom/client'
 import './index.css'
-import RouteProvider from "./RouteProvider.tsx";
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query'; // Import QueryClient and QueryClientProvider
 import '@mantine/core/styles.css';
 import '@mantine/charts/styles.css';
 
+import {StrictMode, Suspense} from 'react'
+import {createRoot} from 'react-dom/client'
+import App from "./App.tsx";
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'; // Import QueryClient and QueryClientProvider
 import {MantineProvider} from '@mantine/core';
-import LoadingIndicator from "./components/LoadingIndicator.tsx";
+import {BrowserRouter} from "react-router-dom";
+import {LoadingIndicator} from "./components";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -18,15 +19,13 @@ const queryClient = new QueryClient({
     }
 });
 
-import { BrowserRouter } from "react-router-dom";
-
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <QueryClientProvider client={queryClient}>
             <MantineProvider>
                 <Suspense fallback={<LoadingIndicator/>}>
                     <BrowserRouter>
-                        <RouteProvider/>
+                        <App/>
                     </BrowserRouter>
                 </Suspense>
             </MantineProvider>

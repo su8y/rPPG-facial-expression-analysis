@@ -1,9 +1,8 @@
-import {useDashboardData} from "../hooks/useDashboardData.ts";
-import {QueryLayout} from "../components/QueryLayout.tsx";
-import {BasicResults} from "../components/dashboard/BasicResults.tsx";
-import {DetailedResults} from "../components/dashboard/DetailedResults.tsx";
+import {useDashboardData} from "../features/dashboard/hooks/useDashboardData.ts";
 import {Grid, Tabs} from "@mantine/core";
 import {useMediaQuery} from "@mantine/hooks";
+import {BasicResults, DetailedResults} from "../features/dashboard";
+import {QueryLayout} from "../components";
 
 export function Dashboard() {
     const dashboardQueryResult = useDashboardData();

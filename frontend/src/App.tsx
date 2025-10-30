@@ -1,13 +1,12 @@
 import {Route, Routes} from "react-router-dom";
-import {Layout} from "./components/Layout.tsx";
-import {Dashboard} from "./pages/Dashboard.tsx";
-import {Login} from "./pages/Login.tsx";
-import {Signup} from "./pages/Signup.tsx";
-import ProtectLayout from "./components/ProtectLayout.tsx";
+import {Layout, ProtectLayout} from "./components";
+import {Dashboard} from "./pages/dashboard.tsx";
+import {Login} from "./pages/login.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
-import {ROOT} from "./constants/ROOT.ts";
+import {ROOT} from "./utils/constants.ts";
+import {Signup} from "./pages/signup.tsx";
 
-function RouteProvider() {
+function App() {
     return (
         <AuthProvider>
             <Routes>
@@ -23,4 +22,4 @@ function RouteProvider() {
     );
 }
 
-export default RouteProvider;
+export default App;
