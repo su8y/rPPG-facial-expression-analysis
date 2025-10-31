@@ -1,9 +1,11 @@
-import {Badge, Table, Text} from '@mantine/core';
+import {Badge, Center, Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
 import type {EmotionType, RecognitionDetail, RecognitionRow} from "../../types/rppg.type.ts";
 import {EmptyTableTd} from "../empty-table-td.tsx";
 import {BorderCard} from "../border-card.tsx";
 import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
+import {Gauge} from "../gauge.tsx";
+import React from "react";
 
 interface FacialRecognitionSectionProps {
     data: RecognitionDetail;
@@ -42,13 +44,26 @@ export const FacialRecognitionSection = ({data}: FacialRecognitionSectionProps) 
                 <Table.Tbody>
                     {sortedRowData.map((row, index) => {
                         const isFirstRow = index === 0;
+
+                        let color = 'black';
+                        if (data.accuracyAfter > data.accuracyBefore) color = 'green';
+                        else if (data.accuracyAfter < data.accuracyBefore) color = 'red';
                         const summaryCells = isFirstRow ? (
                             <>
                                 <Table.Td rowSpan={allEmotions.length}>
-                                    <Text ta="center">{data.accuracyBefore}% → {data.accuracyAfter}%</Text>
+                                    <Text>
+                                        {data.accuracyBefore}% → <Text component="span" c={color}
+                                                                       fw={700}>{data.accuracyAfter}%</Text>
+                                    </Text>
                                 </Table.Td>
                                 <Table.Td rowSpan={allEmotions.length}>
-                                    <Text ta="center">{data.responseTime}ms</Text>
+                                    <Center h={30}>
+                                        <Gauge value={data.responseTime} max={1000}/>
+                                    </Center>
+                                    <Text ta="center" size={'md'} fw={600}>
+                                        <Text component={'span'} size={'xl'} fw={750}>{data.responseTime}</Text>
+                                        {' '}ms
+                                    </Text>
                                 </Table.Td>
                             </>
                         ) : null;
@@ -60,7 +75,6 @@ export const FacialRecognitionSection = ({data}: FacialRecognitionSectionProps) 
                                     <EmptyTableTd value={EMOTION_NAMES['Neutral']}/>
                                     <EmptyTableTd value={<Badge style={{position: 'relative'}} color="red"
                                                                 variant="light">{SUCCESS_STATUS.FAILURE}</Badge>}/>
-                                    <EmptyTableTd value={''}/>
                                     {summaryCells}
                                 </Table.Tr>
                             );
