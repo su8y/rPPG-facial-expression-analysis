@@ -1,16 +1,18 @@
 import React from 'react';
-import {Card, Table, Text, Title} from '@mantine/core';
-import {EMOTION_NAMES} from '../../utils/constants';
+import {Table, Text} from '@mantine/core';
+import {EMOTION_EMOJI, EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, MimicDetail, MimicMatchScore} from "../../types/rppg.type.ts";
-import {BlurOverlay} from '../../../../components';
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
-interface FacialMimicMatchCardProps {
+interface FacialMimicMatchSectionProps {
     data: MimicDetail;
 }
 
 type MimicRowData = MimicMatchScore | { emotion: EmotionType; isInactive: true };
 
-export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}) => {
+export const FacialMimicMatchSection = ({data}: FacialMimicMatchSectionProps) => {
 
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRowData: MimicMatchScore[] = [];
@@ -28,11 +30,7 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
     const sortedRowData: MimicRowData[] = [...activeRowData, ...inactiveRowData];
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 따라하기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                제시된 표정을 얼마나 정확하게 따라했는지 확인합니다.
-            </Text>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_MIMIC}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -45,13 +43,8 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
                         if ('isInactive' in score) {
                             return (
                                 <Table.Tr key={score.emotion}>
-                                    <Table.Td>{EMOTION_NAMES[score.emotion]}</Table.Td>
-                                    <Table.Td >
-                                        <Text style={{position: 'relative'}} component="div" c="dimmed">
-                                            10% → 15%
-                                            <BlurOverlay/>
-                                        </Text>
-                                    </Table.Td>
+                                    <Table.Td>{EMOTION_NAMES[score.emotion]}{EMOTION_EMOJI[score.emotion]}</Table.Td>
+                                    <EmptyTableTd value={'10% -> 15%'}/>
                                 </Table.Tr>
                             );
                         }
@@ -62,7 +55,7 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
 
                         return (
                             <Table.Tr key={score.emotion}>
-                                <Table.Td>{EMOTION_NAMES[score.emotion]}</Table.Td>
+                                <Table.Td>{EMOTION_NAMES[score.emotion]}{EMOTION_EMOJI[score.emotion]}</Table.Td>
                                 <Table.Td>
                                     <Text>
                                         {score.before}% → <Text component="span" c={color}
@@ -74,6 +67,6 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
                     })}
                 </Table.Tbody>
             </Table>
-        </Card>
+        </BorderCard>
     );
 };

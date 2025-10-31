@@ -1,7 +1,7 @@
 import {useDashboardData} from "../features/dashboard/hooks/useDashboardData.ts";
 import {Grid, Tabs} from "@mantine/core";
 import {useMediaQuery} from "@mantine/hooks";
-import {BasicResults, DetailedResults} from "../features/dashboard";
+import {BasicResultContent, DetailResultContent} from "../features/dashboard";
 import {QueryLayout} from "../components";
 
 export function Dashboard() {
@@ -14,25 +14,25 @@ export function Dashboard() {
                 (data) => (
                     isMobile ? (
                         <Tabs defaultValue="basic">
-                            <Tabs.List>
+                            <Tabs.List style={{marginBottom: '1rem'}}>
                                 <Tabs.Tab value="basic">기본 결과</Tabs.Tab>
                                 <Tabs.Tab value="detailed">상세 결과</Tabs.Tab>
                             </Tabs.List>
 
                             <Tabs.Panel value="basic">
-                                <BasicResults data={data}/>
+                                <BasicResultContent data={data}/>
                             </Tabs.Panel>
                             <Tabs.Panel value="detailed">
-                                <DetailedResults data={data}/>
+                                <DetailResultContent data={data}/>
                             </Tabs.Panel>
                         </Tabs>
                     ) : (
                         <Grid>
                             <Grid.Col span={6}>
-                                <BasicResults data={data}/>
+                                <BasicResultContent data={data}/>
                             </Grid.Col>
                             <Grid.Col span={6}>
-                                <DetailedResults data={data}/>
+                                <DetailResultContent data={data}/>
                             </Grid.Col>
                         </Grid>
                     )

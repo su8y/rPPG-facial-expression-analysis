@@ -1,5 +1,5 @@
-import { type ReactNode, useState, useEffect } from 'react';
-import { AuthContext } from '../features/auth/hooks/useAuthContext';
+import {type ReactNode, useEffect, useState} from 'react';
+import {AuthContext} from '../features/auth/hooks/useAuthContext';
 
 interface AuthProviderProps {
     children: ReactNode;

@@ -1,8 +1,11 @@
-import {Badge, Box, Card, Table, Text, Title} from '@mantine/core';
-import {EMOTION_NAMES} from '../../utils/constants';
+import {Badge, Box, Table, Text} from '@mantine/core';
+import {EMOTION_EMOJI, EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, ReplicationDetail} from "../../types/rppg.type.ts";
 import {BlurOverlay} from "../../../../components";
 import type {ReactNode} from "react";
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
 interface FacialReplicationCardProps {
     data: ReplicationDetail;
@@ -10,7 +13,7 @@ interface FacialReplicationCardProps {
 
 const NATURAL_THRESHOLD = 70;
 
-export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
+export const FacialReplicationSection = ({data}: FacialReplicationCardProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRows: ReactNode[] = [];
     const inactiveRows: ReactNode[] = [];
@@ -21,19 +24,14 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
         if (!rowData) {
             inactiveRows.push(
                 <Table.Tr key={emotion}>
-                    <Table.Td>{EMOTION_NAMES[emotion]}</Table.Td>
-                    <Table.Td>
-                        <Box style={{position: 'relative'}}>
-                            <Text component="div" c="dimmed">중립 (15점 → 20점)</Text>
-                            <BlurOverlay/>
-                        </Box>
-                    </Table.Td>
-                    <Table.Td>
-                        <Box style={{position: 'relative'}}>
-                            <Badge color="orange" variant="light">부자연스러움</Badge>
-                            <BlurOverlay/>
-                        </Box>
-                    </Table.Td>
+                    <Table.Td>{EMOTION_NAMES[emotion]}{EMOTION_EMOJI[emotion]}</Table.Td>
+                    <EmptyTableTd value={<Box style={{position: 'relative'}}>
+                        <Text component="div" c="dimmed">중립 (15점 → 20점)</Text>
+                    </Box>}></EmptyTableTd>
+                    <EmptyTableTd value={<Box style={{position: 'relative'}}>
+                        <Badge color="orange" variant="light">부자연스러움</Badge>
+                        <BlurOverlay/>
+                    </Box>}/>
                 </Table.Tr>
             );
         } else {
@@ -45,7 +43,7 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
 
             activeRows.push(
                 <Table.Tr key={emotion}>
-                    <Table.Td>{EMOTION_NAMES[emotion]}</Table.Td>
+                    <Table.Td>{EMOTION_NAMES[emotion]}{EMOTION_EMOJI[emotion]}</Table.Td>
                     <Table.Td>
                         <Text>
                             {EMOTION_NAMES[detectedEmotion]} ({previous}점 → <Text component="span" c={color}
@@ -61,11 +59,7 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
     });
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 지어보기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                제시된 감정을 표정으로 표현하는 능력을 AI가 분석합니다.
-            </Text>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_REPLICATION}>
             <Table verticalSpacing="xs">
                 <Table.Thead>
                     <Table.Tr>
@@ -76,6 +70,6 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
                 </Table.Thead>
                 <Table.Tbody>{[...activeRows, ...inactiveRows]}</Table.Tbody>
             </Table>
-        </Card>
+        </BorderCard>
     );
 };

@@ -48,6 +48,7 @@ src/
 ├── utils/                # 글로벌 유틸 
 │   ├── axios.ts          # axios 인스턴스
 │   └── constants.ts      # 글로벌 상수
+├── store/                # 상태 관리 
 └── App.tsx               # 라우팅 컴포넌트
 
 ```

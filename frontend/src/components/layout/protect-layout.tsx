@@ -1,7 +1,7 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import {Navigate, Outlet} from 'react-router-dom';
 import {ROOT} from "../../utils/constants.ts";
 import {useAuth} from "../../features/auth/hooks/useAuthContext.ts";
-import {LoadingIndicator} from "../common/LoadingIndicator.tsx"; // (옵션)
+import {LoadingIndicator} from "../common/loading-indicator.tsx"; // (옵션)
 
 export const ProtectLayout = () => {
     const { isAuthenticated, isLoading } = useAuth();

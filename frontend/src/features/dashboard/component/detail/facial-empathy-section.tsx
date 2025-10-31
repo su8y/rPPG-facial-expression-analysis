@@ -1,9 +1,11 @@
-import {Badge, Card, Table, Text, Title} from '@mantine/core';
+import {Badge, Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES, MATCH_STATUS} from '../../utils/constants';
 import type {EmotionType, EmpathyDetail, EmpathyRow, ScoreBeforeAfter} from "../../types/rppg.type.ts";
-import {BlurOverlay} from '../../../../components';
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
-interface FacialEmpathyCardProps {
+interface FacialEmpathySectionProps {
     data: EmpathyDetail;
 }
 
@@ -12,10 +14,7 @@ type EmpathyRowData = { emotion: EmotionType, row: EmpathyRow, score: ScoreBefor
     isInactive: true
 };
 
-const EmptyTableTd = ({value}: { value: string }) => (
-    <Table.Td><Text component="div" c="dimmed" style={{position: 'relative'}}>{value}<BlurOverlay/></Text></Table.Td>);
-
-export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
+export const FacialEmpathySection = ({data}: FacialEmpathySectionProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRowData: EmpathyRowData[] = [];
     const inactiveRowData: EmpathyRowData[] = [];
@@ -35,11 +34,7 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
     const sortedRowData = [...activeRowData, ...inactiveRowData];
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 공감하기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                AI가 분석한 표정과 스스로 느낀 감정을 비교하고, 공감 능력의 변화를 확인합니다.
-            </Text>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_EMPATHY}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -55,9 +50,10 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
                         if ('isInactive' in item) {
                             return (
                                 <Table.Tr key={item.emotion}>
-                                    <Table.Td>{EMOTION_NAMES[item.emotion]}</Table.Td>
-                                    <EmptyTableTd value={'없음'}/>
-                                    <EmptyTableTd value={'없음'}/>
+                                    <Table.Td>{EMOTION_NAMES[item.emotion]}{EMOTION_EMOJI[item.emotion]}</Table.Td>
+                                    <EmptyTableTd value={'슬픔(80%)'}/>
+                                    <EmptyTableTd value={'중립'}/>
+                                    <EmptyTableTd value={'불일치'}/>
                                     <EmptyTableTd value={'00점 → 00점'}/>
                                 </Table.Tr>
                             );
@@ -89,6 +85,6 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
                     })}
                 </Table.Tbody>
             </Table>
-        </Card>
+        </BorderCard>
     );
 };

@@ -1,1 +1,1 @@
-export * from './common/BlurOverlay';export * from './common/ErrorDisplay';export * from './common/LoadingIndicator';export * from './layout/Layout';export * from './layout/ProtectLayout';export * from './layout/QueryLayout';
+export * from './common/blur-overlay.tsx';export * from './common/error-display.tsx';export * from './common/loading-indicator.tsx';export * from './layout/layout.tsx';export * from './layout/protect-layout.tsx';export * from './layout/query-layout.tsx';

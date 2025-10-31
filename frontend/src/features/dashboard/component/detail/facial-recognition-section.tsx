@@ -1,15 +1,17 @@
-import {Badge, Card, Table, Text, Title} from '@mantine/core';
-import {EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
+import {Badge, Table, Text} from '@mantine/core';
+import {EMOTION_EMOJI, EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
 import type {EmotionType, RecognitionDetail, RecognitionRow} from "../../types/rppg.type.ts";
-import {BlurOverlay} from "../../../../components";
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
+import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
-interface FacialRecognitionCardProps {
+interface FacialRecognitionSectionProps {
     data: RecognitionDetail;
 }
 
 type RecognitionRowData = RecognitionRow | { proposedEmotion: EmotionType; isInactive: true };
 
-export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
+export const FacialRecognitionSection = ({data}: FacialRecognitionSectionProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRowData: RecognitionRow[] = [];
     const inactiveRowData: { proposedEmotion: EmotionType; isInactive: true }[] = [];
@@ -26,11 +28,7 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
     const sortedRowData: RecognitionRowData[] = [...activeRowData, ...inactiveRowData];
 
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Title order={4}>표정 인지하기</Title>
-            <Text size="sm" c="dimmed" mt="xs" mb="md">
-                제시된 표정을 얼마나 잘 인지하는지 확인합니다.
-            </Text>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_RECOGNITION}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -58,20 +56,11 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                         if ('isInactive' in row) {
                             return (
                                 <Table.Tr key={row.proposedEmotion}>
-                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}</Table.Td>
-                                    <Table.Td>
-                                        <Text style={{position: 'relative'}} component="div"
-                                              c="dimmed">
-                                            {EMOTION_NAMES['Neutral']}
-                                            <BlurOverlay/>
-                                        </Text>
-                                    </Table.Td>
-                                    <Table.Td>
-                                        <Badge style={{position: 'relative'}} color="red"
-                                               variant="light">{SUCCESS_STATUS.FAILURE}
-                                            <BlurOverlay/>
-                                        </Badge>
-                                    </Table.Td>
+                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}{EMOTION_EMOJI[row.proposedEmotion]}</Table.Td>
+                                    <EmptyTableTd value={EMOTION_NAMES['Neutral']}/>
+                                    <EmptyTableTd value={<Badge style={{position: 'relative'}} color="red"
+                                                                variant="light">{SUCCESS_STATUS.FAILURE}</Badge>}/>
+                                    <EmptyTableTd value={''}/>
                                     {summaryCells}
                                 </Table.Tr>
                             );
@@ -79,7 +68,7 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                             const isMatch = row.proposedEmotion === row.myEmotion;
                             return (
                                 <Table.Tr key={row.proposedEmotion}>
-                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}</Table.Td>
+                                    <Table.Td>{EMOTION_NAMES[row.proposedEmotion]}{EMOTION_EMOJI[row.proposedEmotion]}</Table.Td>
                                     <Table.Td>{EMOTION_NAMES[row.myEmotion]}</Table.Td>
                                     <Table.Td>
                                         <Badge
@@ -92,6 +81,6 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                     })}
                 </Table.Tbody>
             </Table>
-        </Card>
+        </BorderCard>
     );
 };
