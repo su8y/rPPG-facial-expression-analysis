@@ -1,13 +1,13 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { login, signup } from "../api/api.ts";
-import { useNavigate } from "react-router-dom";
-import type { AuthCredentials } from "../types/auth.type.ts";
-import { useAuth as useAuthContext } from "./useAuthContext.ts"; // Corrected path
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {login, signup} from "../api/api.ts";
+import {useNavigate} from "react-router-dom";
+import type {AuthCredentials} from "../types/auth.type.ts";
+import {useAuth as useAuthContext} from "./useAuthContext.ts";
 
 export const useAuth = () => {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
-    const { login: authContextLogin } = useAuthContext();
+    const {login: authContextLogin} = useAuthContext();
 
     const loginMutation = useMutation({
         mutationFn: (credentials: AuthCredentials) => login(credentials),
@@ -27,5 +27,5 @@ export const useAuth = () => {
         },
     });
 
-    return { loginMutation, signupMutation };
+    return {loginMutation, signupMutation};
 };
