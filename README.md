@@ -12,17 +12,39 @@
 ### Backend 
 - Nestjs
 - TypeORM
-- calss-validator
-- 
+- class-validator
 
 ### 기술 선택 이유
-- React를 선택한 이유: ...
-- Tanstack Query를 선택한 이유: ...
-- 차트 라이브러리 선택 이유: ...
+
+- React를 선택한 이유:
+    - 컴포넌트 기반 아키텍처, 선언적 UI등 복잡한 UI를 개발하는데 편합니다.
+    - 익숙한 기술이어서 입니다.
+- Tanstack Query를 선택한 이유:
+    - api 데이터를 자동으로 caching, refetching, invalidation하는 것을 통해 항상 최신상태로 유지해주는 편리한 라이브러리 입니다.
+    - 이런 상태를 관리하기 위한것을 편리하게 만들어 놓아 반복적인코드들을 많이 줄여주어서 좋습니다.
+- 차트 라이브러리 선택 이유:
+    - React Component 기반이고 차트의 각 부분이 React 컴포넌트로 제공되어서 선언적이고 간단하게 개발이 됩니다.
+    - 또, Mantine Rechart는 Mantine의 테마에 맞게 래핑한 라이브러리로, UI적으로 통일성을 제공하여 좋습니다.
+- TypeORM 선택이유
+    - Java,Spring 개발자 이면서 JPA, Hibernate(ORM)을 사용해본 입장으로서 ORM 기술에 학습을 안하고 바로 사용하기가 편했습니다.
+    - Jpa처럼 TypeORM에서 보일러플레이트 코드들을 직접 작성을 해주는것이 편리하게 느껴졌습니다.
+    - 비록, 복잡한 비즈니스 로직을 객체지향적으로 짜지 못했지만(회원가입, 로그인 기능만 개발해서) 추후에 있을 개발 확장성에 있어서
+    - 비즈니스 로직을 객체지향 적으로 짤수있는것은 객체지향 개발자로서 가장 큰 이점이라고 생각합니다.
+- NestJs 선택 이유
+    - 관심사의 분리를 통해서 견고한 아키텍처를 제공하고 의존성 주입을 통해 코드간 결합도를 낮출수 있는 장점이 있습니다.
+- SQLLite 선택이유
+    - 단순히 개발을 하고 PoC를 하기위해서 파일 DB를 선택했습니다.
+    - ORM 기술을 이용했기 때문에 추후 데이터베이스를 변경한다고 해도 간단한 설정 변경으로 마이그레이션이 가능합니다.
 
 ## 설치 및 실행
-npm install
-npm run dev
+
+```ssh
+# backend 시작방법
+npm run start:backend
+
+# frontend 시작방법
+npm run start:backend
+```
 
 ## 프로젝트 구조
 ```
@@ -65,17 +87,16 @@ src/
 
 ### 에러 핸들링
 - Tanstack Query의 retry 옵션 활용
-- ErrorBoundary 구현
-- ...
 
 ### 상태 관리
 - 서버 상태: Tanstack Query
-- 클라이언트 상태: ...
+- 클라이언트 상태: Context API
 
 ### 데이터 시각화
 - 심박수 시계열 차트: hrValues 배열 활용
 - 감정 분석: emotionResult 객체를 차트로 시각화
 
+###  
 <!--
 ## 개선 사항 (선택)
 실제 프로덕션 환경이라면 추가하고 싶은 기능이나 개선 방향

@@ -11,7 +11,7 @@ export const HeartRateSection = (props: HeartRateChartProps) => {
             <Stack>
                 <HeartRateChart {...props} />
                 <Center>
-                    <Text size={'xs'} style={{whiteSpace: 'pre-line'}}>
+                    <Text ta='center' size={'xs'} style={{whiteSpace: 'pre-line'}}>
                         {`심박수는 1분동안 심장이 뛰는 횟수를 의미해요.
                         일반적으로 성인은 60~100 BPM이 정상 범위에요.
                         심박수가 너무 높거나 낮으면
