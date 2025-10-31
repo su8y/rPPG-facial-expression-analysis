@@ -1,5 +1,5 @@
 import {Badge, Box, Table, Text} from '@mantine/core';
-import {EMOTION_NAMES} from '../../utils/constants';
+import {EMOTION_EMOJI, EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, ReplicationDetail} from "../../types/rppg.type.ts";
 import {BlurOverlay} from "../../../../components";
 import type {ReactNode} from "react";
@@ -24,7 +24,7 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
         if (!rowData) {
             inactiveRows.push(
                 <Table.Tr key={emotion}>
-                    <Table.Td>{EMOTION_NAMES[emotion]}</Table.Td>
+                    <Table.Td>{EMOTION_NAMES[emotion]}{EMOTION_EMOJI[emotion]}</Table.Td>
                     <EmptyTableTd value={<Box style={{position: 'relative'}}>
                         <Text component="div" c="dimmed">중립 (15점 → 20점)</Text>
                     </Box>}></EmptyTableTd>
@@ -43,7 +43,7 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
 
             activeRows.push(
                 <Table.Tr key={emotion}>
-                    <Table.Td>{EMOTION_NAMES[emotion]}</Table.Td>
+                    <Table.Td>{EMOTION_NAMES[emotion]}{EMOTION_EMOJI[emotion]}</Table.Td>
                     <Table.Td>
                         <Text>
                             {EMOTION_NAMES[detectedEmotion]} ({previous}점 → <Text component="span" c={color}

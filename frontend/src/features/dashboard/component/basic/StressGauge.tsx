@@ -1,5 +1,6 @@
-import {Box, Paper, Text, Title} from '@mantine/core';
-import type {FC} from "react";
+import {Box, Center, Text} from '@mantine/core';
+import {type FC} from "react";
+import {DetailSection} from "../detail/DetailSection.tsx";
 
 type StressLevel = 'Low' | 'Medium' | 'High';
 
@@ -31,15 +32,12 @@ export const StressGauge: FC<StressGaugeProps> = ({level}) => {
     const {position, description} = getStressInfo(level);
 
     return (
-        <Paper p="md" >
-            <Title order={4} mb="xl">스트레스 수치</Title>
+        <DetailSection title={'스트레스 수치'}>
             <Box style={{position: 'relative', padding: '20px 0'}}>
-
-                {/* Progress 대신 Box 사용 */}
                 <Box
                     style={{
-                        height: 20, // Progress의 size="xl"과 유사한 높이
-                        borderRadius: 'var(--mantine-radius-sm)', // Progress의 radius="sm"
+                        height: '2.5rem',
+                        borderRadius: '8px',
                         backgroundImage: 'linear-gradient(to right, #40c057, #fcc419, #fa5252)',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -51,7 +49,6 @@ export const StressGauge: FC<StressGaugeProps> = ({level}) => {
                     </Text>
                 </Box>
 
-                {/* 포인터 부분 (기존 코드 동일) */}
                 <Text style={{
                     position: 'absolute',
                     left: `${position}%`,
@@ -60,7 +57,10 @@ export const StressGauge: FC<StressGaugeProps> = ({level}) => {
                     textAlign: 'center',
                 }} size="xl">▼</Text>
             </Box>
-            <Text ta="center" mt="md">{description}</Text>
-        </Paper>
+            <Center>
+                <Text size={'xs'} style={{whiteSpace: 'pre-line'}}>
+                    {description}</Text>
+            </Center>
+        </DetailSection>
     );
 };

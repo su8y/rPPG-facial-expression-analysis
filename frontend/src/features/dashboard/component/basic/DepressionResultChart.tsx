@@ -1,5 +1,6 @@
 import React from 'react';
-import {Group, Paper, RingProgress, Text, Title} from '@mantine/core';
+import {Group, RingProgress, Text} from '@mantine/core';
+import {DetailSection} from "../detail/DetailSection.tsx";
 
 interface DepressionResultChartProps {
     score: number;
@@ -38,8 +39,7 @@ export const DepressionResultChart: React.FC<DepressionResultChartProps> = ({sco
     const {level, color, description} = getDepressionInfo(score);
 
     return (
-        <Paper shadow="xs" p="md" mt="md">
-            <Title order={4} mb="md">우울증 설문 결과</Title>
+        <DetailSection title={'우울증 설문 결과'}>
             <Group>
                 <RingProgress
                     size={150}
@@ -52,10 +52,10 @@ export const DepressionResultChart: React.FC<DepressionResultChartProps> = ({sco
                     }
                 />
                 <div style={{flex: 1}}>
-                    <Text size="lg" fw={700}>결과:{' '}<Text component={'span'} c={color}>{level}</Text></Text>
+                    <Text size="lg" fw={700}>결과:{' '}<Text component={'span'} c={color} fw={700}>{level}</Text></Text>
                     <Text size="sm" mt="xs" style={{whiteSpace: 'pre-line'}}>{description}</Text>
                 </div>
             </Group>
-        </Paper>
+        </DetailSection>
     );
 };

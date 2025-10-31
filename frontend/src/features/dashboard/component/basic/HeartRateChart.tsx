@@ -1,6 +1,8 @@
 import React from 'react';
-import {Box, Flex, Paper, Text, Title} from '@mantine/core';
+import {Box, Center, Group, Stack, Text} from '@mantine/core';
 import {LineChart} from "@mantine/charts";
+import {DetailSection} from "../detail/DetailSection.tsx";
+import {HeartRateChangesChart} from "./HeartRateChagesChart.tsx";
 
 interface HeartRateChartProps {
     previousHrValues: number[];
@@ -18,50 +20,56 @@ export const HeartRateChart: React.FC<HeartRateChartProps> = ({
     }));
     const currentAverageHrValue = Math.round(currentHrValues.reduce((a, b) => a + b, 0) / currentHrValues.length);
     return (
-        <Paper  p="md">
-            <Title order={4} mb="md">심박수</Title>
-            <Box style={{position: 'relative'}}>
-                <LineChart
-                    h={300}
-                    data={data}
-                    dataKey="index"
-                    curveType="monotone"
-                    xAxisLabel="시간 (초)"
-                    yAxisLabel="심박수 (bpm)"
-                    withTooltip
-                    withLegend
-                    style={{userSelect: 'none', cursor: 'pointer'}}
-                    series={[
-                        {name: '이전', color: 'indigo.6'},
-                        {name: '현재', color: 'teal.6'},
-                    ]}
-                />
-                <Box style={{
-                    position: 'absolute',
-                    top: '65%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    textAlign: 'center',
-                    userSelect: 'none',
-                }}>
-                    <Text size="lg" fw={500}>평균</Text>
-                    <Flex align={'center'} gap={'sm'}>
-                        <Text component={'span'} size="2.8em" fw={700} lh={1}>
-                            {currentAverageHrValue}
-                        </Text>
-                        <Text component={'span'} size="lg" fw={500}>
-                            BPM
-                        </Text>
-                    </Flex>
+        <DetailSection title={'심박수'}>
+            <Stack>
+                <Box style={{position: 'relative'}}>
+
+                    <LineChart
+                        h={'15rem'}
+                        data={data}
+                        dataKey="index"
+                        curveType="monotone"
+                        xAxisLabel="시간 (초)"
+                        yAxisLabel="심박수 (bpm)"
+                        withTooltip
+                        withLegend
+                        style={{userSelect: 'none', cursor: 'pointer'}}
+                        series={[
+                            {name: '이전', color: 'indigo.6'},
+                            {name: '현재', color: 'teal.6'},
+                        ]}
+                    />
+                    <Center style={{
+                        position: 'absolute',
+                        bottom: '25%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        textAlign: 'center',
+                        userSelect: 'none',
+                    }}>
+                        <Stack gap={0}>
+                            <Text size={'1rem'} fw={500}>평균</Text>
+                            <Group gap={1}>
+                                <Text component={'span'} size="1.5em" fw={700} lh={1}>
+                                    {currentAverageHrValue}
+                                </Text>
+                                <Text component={'span'} size="1rem" fw={500}>
+                                    BPM
+                                </Text>
+                            </Group>
+                        </Stack>
+                    </Center>
                 </Box>
-            </Box>
-            <Text component='p' style={{whiteSpace: 'pre-line', textAlign: 'center'}}>
-                {` 심박수는 1분동안 심장이 뛰는 횟수를 의미해요.
-                일반적으로 성인은 60~100 BPM이 정상 범위에요.
-                심박수가 너무 높거나 낮으면
-                건강 문제의 신호일 수 있어 주의가 필요해요. 
-                `}
-            </Text>
-        </Paper>
+                <Center>
+                    <Text size={'xs'} style={{whiteSpace: 'pre-line'}}>
+                        {`심박수는 1분동안 심장이 뛰는 횟수를 의미해요.
+                        일반적으로 성인은 60~100 BPM이 정상 범위에요.
+                        심박수가 너무 높거나 낮으면
+                        건강 문제의 신호일 수 있어 주의가 필요해요.`}
+                    </Text>
+                </Center>
+                <HeartRateChangesChart previousHrValues={previousHrValues} currentHrValues={currentHrValues}/>
+            </Stack>
+        </DetailSection>
     );
 };
