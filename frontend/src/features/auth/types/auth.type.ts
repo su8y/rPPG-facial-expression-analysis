@@ -9,3 +9,7 @@ export interface AuthResponse {
 export interface SignUpResponse {
     username: string;
 }
+
+export interface CheckUsernameRequest {
+    username: string;
+}

@@ -10,4 +10,8 @@ export const signup = async (credentials: AuthCredentials): Promise<SignUpRespon
     const response = await axiosInstance.post("/auth/signup", credentials);
     return response.data;
 };
+export const checkUsername = async (username: string): Promise<SignUpResponse> => {
+    const response = await axiosInstance.get(`/auth/check_username/${username}`);
+    return response.data;
+};
 
