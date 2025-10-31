@@ -2,17 +2,17 @@ import React from 'react';
 import {Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, MimicDetail, MimicMatchScore} from "../../types/rppg.type.ts";
-import {EmptyTableTd} from "../EmptyTableTd.tsx";
-import {DetailSection} from "./DetailSection.tsx";
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
 import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
-interface FacialMimicMatchCardProps {
+interface FacialMimicMatchSectionProps {
     data: MimicDetail;
 }
 
 type MimicRowData = MimicMatchScore | { emotion: EmotionType; isInactive: true };
 
-export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}) => {
+export const FacialMimicMatchSection = ({data}: FacialMimicMatchSectionProps) => {
 
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRowData: MimicMatchScore[] = [];
@@ -30,7 +30,7 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
     const sortedRowData: MimicRowData[] = [...activeRowData, ...inactiveRowData];
 
     return (
-        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_MIMIC}>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_MIMIC}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -67,6 +67,6 @@ export const FacialMimicMatchCard: React.FC<FacialMimicMatchCardProps> = ({data}
                     })}
                 </Table.Tbody>
             </Table>
-        </DetailSection>
+        </BorderCard>
     );
 };

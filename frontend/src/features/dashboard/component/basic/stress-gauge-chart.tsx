@@ -1,6 +1,6 @@
 import {Box, Center, Text} from '@mantine/core';
 import {type FC} from "react";
-import {DetailSection} from "../detail/DetailSection.tsx";
+import {BorderCard} from "../border-card.tsx";
 
 type StressLevel = 'Low' | 'Medium' | 'High';
 
@@ -28,11 +28,11 @@ const getStressInfo = (level: StressLevel) => {
     }
 };
 
-export const StressGauge: FC<StressGaugeProps> = ({level}) => {
+export const StressGaugeChart: FC<StressGaugeProps> = ({level}) => {
     const {position, description} = getStressInfo(level);
 
     return (
-        <DetailSection title={'스트레스 수치'}>
+        <BorderCard title={'스트레스 수치'}>
             <Box style={{position: 'relative', padding: '20px 0'}}>
                 <Box
                     style={{
@@ -61,6 +61,6 @@ export const StressGauge: FC<StressGaugeProps> = ({level}) => {
                 <Text size={'xs'} style={{whiteSpace: 'pre-line'}}>
                     {description}</Text>
             </Center>
-        </DetailSection>
+        </BorderCard>
     );
 };

@@ -1,11 +1,11 @@
 import {Badge, Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES, MATCH_STATUS} from '../../utils/constants';
 import type {EmotionType, EmpathyDetail, EmpathyRow, ScoreBeforeAfter} from "../../types/rppg.type.ts";
-import {EmptyTableTd} from "../EmptyTableTd.tsx";
-import {DetailSection} from "./DetailSection.tsx";
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
 import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
-interface FacialEmpathyCardProps {
+interface FacialEmpathySectionProps {
     data: EmpathyDetail;
 }
 
@@ -14,7 +14,7 @@ type EmpathyRowData = { emotion: EmotionType, row: EmpathyRow, score: ScoreBefor
     isInactive: true
 };
 
-export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
+export const FacialEmpathySection = ({data}: FacialEmpathySectionProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRowData: EmpathyRowData[] = [];
     const inactiveRowData: EmpathyRowData[] = [];
@@ -34,7 +34,7 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
     const sortedRowData = [...activeRowData, ...inactiveRowData];
 
     return (
-        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_EMPATHY}>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_EMPATHY}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -85,6 +85,6 @@ export const FacialEmpathyCard = ({data}: FacialEmpathyCardProps) => {
                     })}
                 </Table.Tbody>
             </Table>
-        </DetailSection>
+        </BorderCard>
     );
 };

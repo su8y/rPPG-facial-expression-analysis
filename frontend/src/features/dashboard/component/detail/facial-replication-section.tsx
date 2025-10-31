@@ -3,8 +3,8 @@ import {EMOTION_EMOJI, EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, ReplicationDetail} from "../../types/rppg.type.ts";
 import {BlurOverlay} from "../../../../components";
 import type {ReactNode} from "react";
-import {EmptyTableTd} from "../EmptyTableTd.tsx";
-import {DetailSection} from "./DetailSection.tsx";
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
 import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
 interface FacialReplicationCardProps {
@@ -13,7 +13,7 @@ interface FacialReplicationCardProps {
 
 const NATURAL_THRESHOLD = 70;
 
-export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
+export const FacialReplicationSection = ({data}: FacialReplicationCardProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRows: ReactNode[] = [];
     const inactiveRows: ReactNode[] = [];
@@ -59,7 +59,7 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
     });
 
     return (
-        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_REPLICATION}>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_REPLICATION}>
             <Table verticalSpacing="xs">
                 <Table.Thead>
                     <Table.Tr>
@@ -70,6 +70,6 @@ export const FacialReplicationCard = ({data}: FacialReplicationCardProps) => {
                 </Table.Thead>
                 <Table.Tbody>{[...activeRows, ...inactiveRows]}</Table.Tbody>
             </Table>
-        </DetailSection>
+        </BorderCard>
     );
 };

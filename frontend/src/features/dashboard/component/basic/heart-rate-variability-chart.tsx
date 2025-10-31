@@ -1,6 +1,6 @@
 import {Group, Stack, Text, Title} from '@mantine/core';
 import {Cell, Pie, PieChart, ResponsiveContainer} from 'recharts';
-import {DetailSection} from "../detail/DetailSection.tsx";
+import {BorderCard} from "../border-card.tsx";
 
 interface HeartRateVariabilityChartProps {
     previousHrv: string;
@@ -68,7 +68,7 @@ export const HeartRateVariabilityChart = ({previousHrv, currentHrv}: HeartRateVa
     const currValue = parseInt(currentHrv, 10);
 
     return (
-        <DetailSection title={'심박 변이도 (HRV)'}>
+        <BorderCard title={'심박 변이도 (HRV)'}>
             <Group gap={0} justify={'center'}>
                 <GaugeChart value={prevValue} title="이전"/>
                 <Stack align="center" gap={0} mx="xs">
@@ -77,6 +77,6 @@ export const HeartRateVariabilityChart = ({previousHrv, currentHrv}: HeartRateVa
                 </Stack>
                 <GaugeChart value={currValue} title="현재"/>
             </Group>
-        </DetailSection>
+        </BorderCard>
     );
 };

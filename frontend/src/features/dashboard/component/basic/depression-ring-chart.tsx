@@ -1,8 +1,8 @@
 import React from 'react';
 import {Group, RingProgress, Text} from '@mantine/core';
-import {DetailSection} from "../detail/DetailSection.tsx";
+import {BorderCard} from "../border-card.tsx";
 
-interface DepressionResultChartProps {
+interface DepressionRingChartProps {
     score: number;
 }
 
@@ -35,11 +35,11 @@ const getDepressionInfo = (score: number) => {
     };
 };
 
-export const DepressionResultChart: React.FC<DepressionResultChartProps> = ({score}) => {
+export const DepressionRingChart = ({score}: DepressionRingChartProps) => {
     const {level, color, description} = getDepressionInfo(score);
 
     return (
-        <DetailSection title={'우울증 설문 결과'}>
+        <BorderCard title={'우울증 설문 결과'}>
             <Group>
                 <RingProgress
                     size={150}
@@ -56,6 +56,6 @@ export const DepressionResultChart: React.FC<DepressionResultChartProps> = ({sco
                     <Text size="sm" mt="xs" style={{whiteSpace: 'pre-line'}}>{description}</Text>
                 </div>
             </Group>
-        </DetailSection>
+        </BorderCard>
     );
 };

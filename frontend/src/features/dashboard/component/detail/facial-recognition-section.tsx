@@ -1,17 +1,17 @@
 import {Badge, Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
 import type {EmotionType, RecognitionDetail, RecognitionRow} from "../../types/rppg.type.ts";
-import {EmptyTableTd} from "../EmptyTableTd.tsx";
-import {DetailSection} from "./DetailSection.tsx";
+import {EmptyTableTd} from "../empty-table-td.tsx";
+import {BorderCard} from "../border-card.tsx";
 import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 
-interface FacialRecognitionCardProps {
+interface FacialRecognitionSectionProps {
     data: RecognitionDetail;
 }
 
 type RecognitionRowData = RecognitionRow | { proposedEmotion: EmotionType; isInactive: true };
 
-export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
+export const FacialRecognitionSection = ({data}: FacialRecognitionSectionProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
     const activeRowData: RecognitionRow[] = [];
     const inactiveRowData: { proposedEmotion: EmotionType; isInactive: true }[] = [];
@@ -28,7 +28,7 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
     const sortedRowData: RecognitionRowData[] = [...activeRowData, ...inactiveRowData];
 
     return (
-        <DetailSection {...DETAIL_SECTION_ITEMS.FACIAL_RECOGNITION}>
+        <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_RECOGNITION}>
             <Table verticalSpacing="xs" mt="md">
                 <Table.Thead>
                     <Table.Tr>
@@ -81,6 +81,6 @@ export const FacialRecognitionCard = ({data}: FacialRecognitionCardProps) => {
                     })}
                 </Table.Tbody>
             </Table>
-        </DetailSection>
+        </BorderCard>
     );
 };

@@ -2,7 +2,7 @@ import {Box, Center, Flex, Group, Stack, Text} from '@mantine/core';
 import {Cell, Pie, PieChart, Tooltip} from 'recharts';
 import type {EmotionResult, EmotionType} from "../../types/rppg.type.ts";
 import type {FC} from "react";
-import {DetailSection} from "../detail/DetailSection.tsx";
+import {BorderCard} from "../border-card.tsx";
 
 interface EmotionDoughnutChartProps {
     emotion: EmotionType;
@@ -40,7 +40,7 @@ export const EmotionDoughnutChart: FC<EmotionDoughnutChartProps> = ({emotion, em
     const mainEmotionValue = total > 0 ? Math.round((emotionResult[emotion] / total) * 100) : 0;
 
     return (
-        <DetailSection title={'감정 분석 결과'}>
+        <BorderCard title={'감정 분석 결과'}>
             <Group justify={'space-around'}>
                 <Box style={{position: 'relative', width: 130, height: 130}}>
                     <PieChart width={130} height={130}>
@@ -78,6 +78,6 @@ export const EmotionDoughnutChart: FC<EmotionDoughnutChartProps> = ({emotion, em
                     ))}
                 </Stack>
             </Group>
-        </DetailSection>
+        </BorderCard>
     );
 };
