@@ -1,11 +1,11 @@
-import { Button, Paper, PasswordInput, Stack, TextInput, Title, Text } from "@mantine/core";
-import { Link } from "react-router-dom";
-import { useForm } from "@mantine/form";
-import { useAuth } from "../features/auth/hooks/useAuth.ts";
+import {Button, Paper, PasswordInput, Stack, Text, TextInput, Title} from "@mantine/core";
+import {Link} from "react-router-dom";
+import {useAuth} from "../features/auth/hooks/useAuth.ts";
 import {ROOT} from "../utils/constants.ts";
+import {useForm} from "@mantine/form";
 
 export function Login() {
-    const { loginMutation } = useAuth();
+    const {loginMutation} = useAuth();
 
     const form = useForm({
         initialValues: {
@@ -14,9 +14,10 @@ export function Login() {
         },
 
         validate: {
-            username: (val) => (val.length <= 3 ? 'ID should include at least 4 characters': null),
-            password: (val) => (val.length <= 5 ? 'Password should include at least 6 characters' : null),
+            username: (val) => (val.length > 3 ? null : '아이디는 4자 이상이어야 합니다.'),
+            password: (val) => (val.length <= 5 ? '비밀번호는 6자 이상이어야 합니다.' : null),
         },
+        onSubmitPreventDefault: "always"
     });
 
     const handleSubmit = (values: typeof form.values) => {
@@ -24,9 +25,9 @@ export function Login() {
     };
 
     return (
-        <Paper radius="md" p="xl" withBorder style={{ maxWidth: 400, margin: 'auto', marginTop: 50 }}>
+        <Paper radius="md" p="xl" withBorder style={{maxWidth: 400, margin: 'auto', marginTop: 50}}>
             <Title order={2} ta="center" mt="md" mb={50}>
-                Login
+                로그인
             </Title>
 
             <form onSubmit={form.onSubmit(handleSubmit)}>
@@ -38,21 +39,26 @@ export function Login() {
                         {...form.getInputProps('username')}
                     />
                     <PasswordInput
-                        label="Password"
+                        label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
                         required
                         {...form.getInputProps('password')}
                     />
+                    {loginMutation.isError && (
+                        <Text ta="center" c="red" size="sm" mt="xs">
+                            사용자 아이디와 비밀번호를 확인해주세요.
+                        </Text>
+                    )}
                     <Button type="submit" fullWidth mt="xl" loading={loginMutation.isPending}>
-                        Login
+                        로그인
                     </Button>
                 </Stack>
             </form>
 
-            <Text ta="center" mt="md">
-                Don't have an account? {' '}
+            <Text ta="center" mt="md" size={'xs'} c={'gray'}>
+                계정이 없으신가요? {' '}
                 <Link to={ROOT.SIGNUP}>
-                    Sign up
+                    회원가입 하러가기
                 </Link>
             </Text>
         </Paper>
