@@ -1,4 +1,3 @@
-import React from 'react';
 import {SimpleGrid} from '@mantine/core';
 import {FacialEmpathySection} from './facial-empathy-section.tsx';
 import {FacialMimicMatchSection} from './facial-mimic-match-section.tsx';

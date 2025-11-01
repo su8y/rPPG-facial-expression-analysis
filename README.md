@@ -1,7 +1,8 @@
 # 정신건강 검사 결과 조회 페이지
 
 ## 배포 URL
-- 프론트엔드: [TOBE UPDATE](#)
+- 프론트엔드: [이동하기](https://r-ppg-facial-expression-analysis-fr.vercel.app)
+- 백엔드: [이동하기](https://r-ppg-facial-expression-analysis-ba.vercel.app/)
 
 ## 기술 스택
 ### Frontend
@@ -37,13 +38,24 @@
     - ORM 기술을 이용했기 때문에 추후 데이터베이스를 변경한다고 해도 간단한 설정 변경으로 마이그레이션이 가능합니다.
 
 ## 설치 및 실행
+***필수**: env 설정이 필요합니다.
+```
+# backend/.env
+JWT_SECRET=
+PORT=
+DASHBOARD_URL=https://core.lucycare.co.kr/api/pre-assignment/session-result-report
 
+# frontend/.env
+VITE_API_URL= #backend server 도메인 입력
+VITE_DASHBOARD_API=/api/sessions/result-report
+```
+**Command 실행**
 ```ssh
 # backend 시작방법
 npm run start:backend
 
 # frontend 시작방법
-npm run start:backend
+npm run start:frontend
 ```
 
 ## 프로젝트 구조
@@ -80,10 +92,17 @@ src/
 - 감정 분석 결과 표시 (파이차트 또는 바차트)
 - 이전/현재 측정값 비교
 - 우울증 점수 변화 추이
-- 과제별(A/B/C/D) 결과 비교
-- ...
+- 스트레스 점수
+- 감정, 표정에 대한 훈련 결과
 
 ## 구현 상세
+- 인증
+  - JWT를 사용한 인증 서버
+  - 회원가입시 디바운스를 사용한 아이디 중복검사
+- 정신건강 대시보드
+  - Mantine UI, ReChart를 활용하여 rPPG 생체신호 데이터 시각화
+  - 감정, 우울증, 스트레스 분석 결과
+  - 각 훈련에 대한 세부정보 결과 표시
 
 ### 에러 핸들링
 - Tanstack Query의 retry 옵션 활용

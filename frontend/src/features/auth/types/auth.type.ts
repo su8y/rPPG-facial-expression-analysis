@@ -6,6 +6,7 @@ export interface AuthCredentials {
 export interface AuthResponse {
     accessToken: string;
 }
+
 export interface SignUpResponse {
     username: string;
 }

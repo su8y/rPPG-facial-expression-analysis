@@ -1,4 +1,4 @@
-import type { EmotionType } from '../types/rppg.type';
+import type {EmotionType} from '../types/rppg.type';
 
 export const EMOTION_NAMES: Record<EmotionType, string> = {
     Angry: '분노',

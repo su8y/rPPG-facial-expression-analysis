@@ -46,8 +46,8 @@ export const FacialReplicationSection = ({data}: FacialReplicationCardProps) => 
                     <Table.Td>{EMOTION_NAMES[emotion]}{EMOTION_EMOJI[emotion]}</Table.Td>
                     <Table.Td>
                         <Text>
-                            {EMOTION_NAMES[detectedEmotion]} ({previous}점 → <Text component="span" c={color}
-                                                                                  fw={700}>{current}점</Text>)
+                            {EMOTION_NAMES[detectedEmotion]} ({previous}% → <Text component="span" c={color}
+                                                                                  fw={700}>{current}%</Text>)
                         </Text>
                     </Table.Td>
                     <Table.Td>

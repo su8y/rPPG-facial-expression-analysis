@@ -1,4 +1,3 @@
-import React from 'react';
 import {Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES} from '../../utils/constants';
 import type {EmotionType, MimicDetail, MimicMatchScore} from "../../types/rppg.type.ts";

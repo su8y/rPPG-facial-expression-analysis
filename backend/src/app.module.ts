@@ -1,18 +1,19 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
-import { typeORMConfig } from './config/typeorm.config';
-import { ConfigModule } from '@nestjs/config';
-import { DashboardModule } from './dashboard/dashboard.module';
+import {Module} from '@nestjs/common';
+import {TypeOrmModule} from '@nestjs/typeorm';
+import {AuthModule} from './auth/auth.module';
+import {typeORMConfig} from './config/typeorm.config';
+import {ConfigModule} from '@nestjs/config';
+import {DashboardModule} from './dashboard/dashboard.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    TypeOrmModule.forRoot(typeORMConfig),
-    AuthModule,
-    DashboardModule,
-  ],
+    imports: [
+        ConfigModule.forRoot({
+            isGlobal: true,
+        }),
+        TypeOrmModule.forRoot(typeORMConfig),
+        AuthModule,
+        DashboardModule,
+    ],
 })
-export class AppModule {}
+export class AppModule {
+}

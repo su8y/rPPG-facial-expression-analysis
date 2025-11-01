@@ -4,14 +4,14 @@ import {useAuth} from "../../features/auth/hooks/useAuthContext.ts";
 import {LoadingIndicator} from "../common/loading-indicator.tsx"; // (옵션)
 
 export const ProtectLayout = () => {
-    const { isAuthenticated, isLoading } = useAuth();
+    const {isAuthenticated, isLoading} = useAuth();
     if (isLoading) {
-      return <LoadingIndicator />;
+        return <LoadingIndicator/>;
     }
 
     if (isAuthenticated) {
-        return <Outlet />;
+        return <Outlet/>;
     }
 
-    return <Navigate to={ROOT.LOGIN} replace />;
+    return <Navigate to={ROOT.LOGIN} replace/>;
 };

@@ -1,1 +1,26 @@
-export const DETAIL_SECTION_ITEMS = {    FACIAL_EMPATHY: {        title: '표정 인지하기',        description: `AI가 분석한 표정과 스스로 느낀 감정을 비교하고, 공감 능력의 변화를 확인합니다.`,        information: `'표정 인지하기 상대방의 감정을 정확히 파악해 상황을 판단하고 오해를 줄이는 첫걸음입니다.                       말에 숨겨진 진심을 읽고 적절하게 반응하기 위해 꼭 필요합니다.`    },    FACIAL_MIMIC: {        title: '표정 공감하기',        description: `제시된 표정을 얼마나 정확하게 따라했는지 확인합니다.`,        information: `표정 공감하기 상대의 감정을 '이해'하는 것을 넘어 '함께 느끼며' 깊은 유대감을 만듭니다.                      진정한 위로와 신뢰 관계를 구축하는 핵심입니다.`    },    FACIAL_RECOGNITION: {        title: '표정 지어보기',        description: `제시된 표정을 얼마나 잘 인지하는지 확인합니다.`,        information: `표정 지어보기 (표현하기) 나의 감정과 생각을 말보다 더 진솔하게 전달하는 수단입니다.                      타인이 나를 오해 없이 이해하고 공감할 수 있도록 돕습니다.`    },    FACIAL_REPLICATION: {        title: '표정 따라하기',        description: `제시된 감정을 표정으로 표현하는 능력을 AI가 분석합니다.`,        information: `표정 따라하기 무의식적으로 상대를 따라 하며 '우리는 연결되어 있다'는 신호를 보냅니다.                      친밀감(라포)을 빠르게 형성하고 공감 능력을 학습하는 본능적인 방법입니다.`    }} as const;
+export const DETAIL_SECTION_ITEMS = {
+    FACIAL_EMPATHY: {
+        title: '표정 공감하기',
+        description: `AI가 분석한 표정과 스스로 느낀 감정을 비교하고, 공감 능력의 변화를 확인합니다.`,
+        information: `표정 공감하기 상대의 감정을 '이해'하는 것을 넘어 '함께 느끼며' 깊은 유대감을 만듭니다.
+                      진정한 위로와 신뢰 관계를 구축하는 핵심입니다.`
+    },
+    FACIAL_MIMIC: {
+        title: '표정 따라하기',
+        description: `제시된 표정을 얼마나 정확하게 따라했는지 확인합니다.`,
+        information: `표정 따라하기 무의식적으로 상대를 따라 하며 '우리는 연결되어 있다'는 신호를 보냅니다.
+                      친밀감(라포)을 빠르게 형성하고 공감 능력을 학습하는 본능적인 방법입니다.`
+    },
+    FACIAL_RECOGNITION: {
+        title: '표정 인지하기',
+        description: `제시된 표정을 얼마나 잘 인지하는지 확인합니다.`,
+        information: `'표정 인지하기 상대방의 감정을 정확히 파악해 상황을 판단하고 오해를 줄이는 첫걸음입니다.
+                       말에 숨겨진 진심을 읽고 적절하게 반응하기 위해 꼭 필요합니다.`
+    },
+    FACIAL_REPLICATION: {
+        title: '표정 지어보기',
+        description: `제시된 감정을 표정으로 표현하는 능력을 AI가 분석합니다.`,
+        information: `표정 지어보기 (표현하기) 나의 감정과 생각을 말보다 더 진솔하게 전달하는 수단입니다.
+                      타인이 나를 오해 없이 이해하고 공감할 수 있도록 돕습니다.`
+    }
+} as const;

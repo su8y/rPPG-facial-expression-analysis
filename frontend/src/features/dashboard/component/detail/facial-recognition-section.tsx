@@ -1,11 +1,10 @@
-import {Badge, Center, Table, Text} from '@mantine/core';
+import {Badge, Center, Stack, Table, Text} from '@mantine/core';
 import {EMOTION_EMOJI, EMOTION_NAMES, SUCCESS_STATUS} from '../../utils/constants';
 import type {EmotionType, RecognitionDetail, RecognitionRow} from "../../types/rppg.type.ts";
 import {EmptyTableTd} from "../empty-table-td.tsx";
 import {BorderCard} from "../border-card.tsx";
 import {DETAIL_SECTION_ITEMS} from "../../utils/messages.ts";
 import {Gauge} from "../gauge.tsx";
-import React from "react";
 
 interface FacialRecognitionSectionProps {
     data: RecognitionDetail;
@@ -29,6 +28,8 @@ export const FacialRecognitionSection = ({data}: FacialRecognitionSectionProps) 
 
     const sortedRowData: RecognitionRowData[] = [...activeRowData, ...inactiveRowData];
 
+    const correctRows = activeRowData.filter(row => row.proposedEmotion === row.myEmotion);
+
     return (
         <BorderCard {...DETAIL_SECTION_ITEMS.FACIAL_RECOGNITION}>
             <Table verticalSpacing="xs" mt="md">
@@ -51,10 +52,16 @@ export const FacialRecognitionSection = ({data}: FacialRecognitionSectionProps) 
                         const summaryCells = isFirstRow ? (
                             <>
                                 <Table.Td rowSpan={allEmotions.length}>
-                                    <Text>
-                                        {data.accuracyBefore}% → <Text component="span" c={color}
-                                                                       fw={700}>{data.accuracyAfter}%</Text>
-                                    </Text>
+                                    <Stack>
+                                        <Text size={'xs'} ta={'center'} style={{whiteSpace: 'pre-line'}}>
+                                            {`${sortedRowData.length}개의 감정 중 
+                                            ${correctRows.length}개를 맞추셨습니다.`}
+                                        </Text>
+                                        <Text size={'sm'} ta={'center'}>
+                                            {data.accuracyBefore}% → <Text component="span" c={color}
+                                                                           fw={700}>{data.accuracyAfter}%</Text>
+                                        </Text>
+                                    </Stack>
                                 </Table.Td>
                                 <Table.Td rowSpan={allEmotions.length}>
                                     <Center h={30}>
