@@ -17,21 +17,22 @@ export const HeartRateVariabilityChart = ({previousHrv, currentHrv}: HeartRateVa
             <Grid gutter="md">
                 <Grid.Col span={{base: 6, sm: 4}}>
                     <Stack align="center" gap={0}>
-                        <Title order={6}>이전</Title>
+                        <Title order={6}>이전: {prevValue}ms</Title>
                         <Gauge value={prevValue} max={200}/>
                     </Stack>
                 </Grid.Col>
                 <Grid.Col span={{base: 6, sm: 4}} order={{sm: 3}}>
                     <Stack align="center" gap={0}>
-                        <Title order={6}>현재</Title>
+                        <Title order={6}>현재: {currValue}ms</Title>
                         <Gauge value={currValue} max={200}/>
                     </Stack>
                 </Grid.Col>
                 <Grid.Col span={{base: 12, sm: 4}} order={{base: 3, sm: 2}}>
                     <Stack align="center" gap={0}>
                         <Group>
+                            <Text size="sm" >현재:</Text>
                             <Text size={'xl'} fw={700}>{currValue}</Text>
-                            <Text size="sm" c="dimmed">ms</Text>
+                            <Text size="sm" >ms</Text>
                         </Group>
                         <Text ta='center' size='xs' style={{whiteSpace: 'pre-line'}}>
                             {`심박 변이도는 심장이 얼마나 유연하게
