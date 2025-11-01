@@ -49,9 +49,7 @@ export function Signup() {
 
 
     const handleSubmit = (values: typeof form.values) => {
-        if (idCheckState.status === 'success') {
-            signupMutation.mutate({username: values.username, password: values.password});
-        }
+        signupMutation.mutate({username: values.username, password: values.password});
     };
 
     // --- 헬퍼 (아이콘 생성) ---

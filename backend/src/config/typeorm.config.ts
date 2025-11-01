@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 export const typeORMConfig: TypeOrmModuleOptions = {
   type: 'sqlite',
-  database: 'db.sqlite',
+  database: '/tmp/db.sqlite',
   synchronize: true,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
 };
