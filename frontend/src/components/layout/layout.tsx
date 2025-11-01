@@ -14,8 +14,8 @@ export function Layout() {
             padding="md"
             header={{height: 50}}
             navbar={{
-                width: 300,
-                breakpoint: 'sm',
+                width: 200,
+                breakpoint: 'md',
                 collapsed: {mobile: !opened},
             }}
         >
@@ -26,7 +26,7 @@ export function Layout() {
                         <Burger
                             opened={opened}
                             onClick={toggle}
-                            hiddenFrom="sm"
+                            hiddenFrom="md"
                             size="sm"
                         />
                         <Image src='logo.svg' h={20} w={'auto'}/>

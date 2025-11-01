@@ -58,7 +58,7 @@ export const StressGaugeChart: FC<StressGaugeProps> = ({level}) => {
                 }} size="xl">▼</Text>
             </Box>
             <Center>
-                <Text size={'xs'} style={{whiteSpace: 'pre-line'}}>
+                <Text ta={'center'} size={'xs'} style={{whiteSpace: 'pre-line'}}>
                     {description}</Text>
             </Center>
         </BorderCard>

@@ -27,7 +27,7 @@ export function Signup() {
             username: (val) => (val.length > 3 ? null : '아이디는 4자 이상이어야 합니다.'),
             password: (val) => (val.length <= 5 ? '비밀번호는 6자 이상이어야 합니다.' : null),
             confirmPassword: (val, values) =>
-                val !== values.password ? 'Passwords did not match' : null,
+                val !== values.password ? '비밀번호가 동일하지 않습니다.' : null,
         },
     });
 
@@ -49,9 +49,7 @@ export function Signup() {
 
 
     const handleSubmit = (values: typeof form.values) => {
-        if (idCheckState.status === 'success') {
-            signupMutation.mutate({username: values.username, password: values.password});
-        }
+        signupMutation.mutate({username: values.username, password: values.password});
     };
 
     // --- 헬퍼 (아이콘 생성) ---
@@ -72,7 +70,7 @@ export function Signup() {
         return null;
     };
 
-    const isButtonDisabled = idCheckState.status !== 'success' || !form.isValid();
+    const isButtonDisabled = checkUsernameMutation.isError || !form.isValid();
 
     return (
         <Paper radius="md" p="xl" withBorder style={{maxWidth: 400, margin: 'auto', marginTop: 50}}>

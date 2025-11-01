@@ -11,7 +11,7 @@ interface FacialReplicationCardProps {
     data: ReplicationDetail;
 }
 
-const NATURAL_THRESHOLD = 70;
+const NATURAL_THRESHOLD = 0.7;
 
 export const FacialReplicationSection = ({data}: FacialReplicationCardProps) => {
     const allEmotions = Object.keys(EMOTION_NAMES) as EmotionType[];
@@ -38,7 +38,7 @@ export const FacialReplicationSection = ({data}: FacialReplicationCardProps) => 
             const {previous, current, emotion: detectedEmotion} = rowData.aiAnalysis;
             const result = current >= NATURAL_THRESHOLD;
             let color = 'black';
-            if (current > previous) color = 'blue';
+            if (current > previous) color = 'green';
             else if (current < previous) color = 'red';
 
             activeRows.push(
@@ -51,7 +51,7 @@ export const FacialReplicationSection = ({data}: FacialReplicationCardProps) => 
                         </Text>
                     </Table.Td>
                     <Table.Td>
-                        <Badge color={result ? 'blue' : 'orange'}>{result ? '자연스러움' : '부자연스러움'}</Badge>
+                        <Badge color={result ? 'green' : 'orange'}>{result ? '자연스러움' : '부자연스러움'}</Badge>
                     </Table.Td>
                 </Table.Tr>
             );
