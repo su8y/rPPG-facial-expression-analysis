@@ -1,1 +1,36 @@
-import {Box, Card, Center, Text, Title} from "@mantine/core";import type {ReactNode} from "react";interface BorderCardProps {    title: string;    description?: string;    information?: string;    children: ReactNode}export function BorderCard({title, description, information, children}: BorderCardProps) {    return <Card withBorder radius={'md'}>        <Title order={5}>            <Text component={'span'} style={{position: 'relative'}} fw={700}>                {title}                <Box style={{                    height: '50%',                    position: 'absolute',                    backgroundColor: 'rgba(0,37,255,0.24)',                    bottom: 0,                    width: '110%'                }}></Box>            </Text>        </Title>        {            description && <Text size={'xs'} c="dimmed">{description}</Text>        }        {children}        {            information && <Center>                <Text ta={'center'} size={'xs'} style={{whiteSpace: 'pre-line'}}>{information}</Text>            </Center>        }    </Card>;}
+import {Box, Card, Center, Text, Title} from "@mantine/core";
+import type {ReactNode} from "react";
+
+interface BorderCardProps {
+    title: string;
+    description?: string;
+    information?: string;
+    children: ReactNode
+}
+
+export function BorderCard({title, description, information, children}: BorderCardProps) {
+    return <Card withBorder radius={'md'}>
+        <Title order={5}>
+            <Text component={'span'} style={{position: 'relative'}} fw={700}>
+                {title}
+                <Box style={{
+                    height: '50%',
+                    position: 'absolute',
+                    backgroundColor: 'rgba(0,37,255,0.24)',
+                    bottom: 0,
+                    width: '110%'
+                }}></Box>
+            </Text>
+        </Title>
+        {
+            description && <Text size={'xs'} c="dimmed">{description}</Text>
+        }
+        {children}
+        {
+
+            information && <Center>
+                <Text ta={'center'} size={'xs'} style={{whiteSpace: 'pre-line'}}>{information}</Text>
+            </Center>
+        }
+    </Card>;
+}

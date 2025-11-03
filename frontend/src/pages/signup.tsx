@@ -3,9 +3,9 @@ import {Link} from "react-router-dom";
 import {useForm} from "@mantine/form";
 import {useAuth} from "../features/auth/hooks/useAuth.ts";
 import {ROOT} from "../utils/constants.ts";
-import {useState} from 'react'; // ▼▼▼ [추가] import ▼▼▼
-import {useDebouncedCallback} from '@mantine/hooks'; // ▼▼▼ [추가] import ▼▼▼
-import {IconCheck, IconX} from '@tabler/icons-react'; // ▼▼▼ [추가] import ▼▼▼
+import {useState} from 'react';
+import {useDebouncedCallback} from '@mantine/hooks';
+import {IconCheck, IconX} from '@tabler/icons-react';
 
 
 export function Signup() {
@@ -52,7 +52,6 @@ export function Signup() {
         signupMutation.mutate({username: values.username, password: values.password});
     };
 
-    // --- 헬퍼 (아이콘 생성) ---
     const createRightSection = () => {
         if (checkUsernameMutation.isError) {
             return (

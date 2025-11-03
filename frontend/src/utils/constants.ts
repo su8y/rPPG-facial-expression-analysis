@@ -1,1 +1,5 @@
-export const ROOT = {    DASHBOARD: "/",    LOGIN: "/login",    SIGNUP: "/signup",} as const;
+export const ROOT = {
+    DASHBOARD: "/",
+    LOGIN: "/login",
+    SIGNUP: "/signup",
+} as const;

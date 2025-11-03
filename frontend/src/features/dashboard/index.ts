@@ -1,1 +1,2 @@
-export * from './component/basic/basic-result-content.tsx';export * from './component/detail/detail-result-content.tsx';
+export * from './component/basic/basic-result-content.tsx';
+export * from './component/detail/detail-result-content.tsx';
